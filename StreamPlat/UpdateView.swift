@@ -6,13 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct UpdateView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
+    @Bindable var item: PlatformItems
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List {
+            TextField("Title", text: $item.title)
+            TextField("Info", text: $item.info)
+            DatePicker("Expiration Date", selection: $item.date, displayedComponents: .date)
+            Button("Update") {
+                dismiss()
+            }
+        }
+        .navigationTitle("Update")
     }
-}
-
-#Preview {
-    UpdateView()
 }
