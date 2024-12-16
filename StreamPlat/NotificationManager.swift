@@ -10,22 +10,20 @@ import UserNotifications
 
 class NotificationManager {
     
-    static let shared = NotificationManager() // Singleton (facile accesso ovunque nell'app)
+    static let shared = NotificationManager()
     
-    private init() { } // Impedisce la creazione di altre istanze
-
-    // Richiede il permesso per le notifiche
+    private init() { }
+    
     func requestNotificationPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
             if let error = error {
-                print("Errore durante la richiesta di autorizzazione: \(error.localizedDescription)")
+                print("Error during permission request: \(error.localizedDescription)")
             } else {
-                print("Permesso concesso: \(granted)")
+                print("Permission granted: \(granted)")
             }
         }
     }
-
-    // Pianifica le notifiche per 15 e 3 giorni prima della scadenza
+    
     func scheduleNotifications(for item: PlatformItems) {
         let notificationCenter = UNUserNotificationCenter.current()
         
@@ -35,11 +33,11 @@ class NotificationManager {
             
             let content = UNMutableNotificationContent()
             if daysBefore == 15 {
-                content.title = "Promemoria: 15 giorni rimasti"
-                content.body = "Hai ancora 15 giorni per usufruire di questo servizio."
+                content.title = "Reminder 15 days left"
+                content.body = "You have 15 days left to use your subscription."
             } else if daysBefore == 3 {
-                content.title = "Promemoria: 3 giorni rimasti"
-                content.body = "Ricordati di disattivare il rinnovo automatico se desideri terminare la sottoscrizione."
+                content.title = "Reminder 3 days left"
+                content.body = "Remember to interrupt your subscription if you don't use it."
             }
             content.sound = .default
             
@@ -50,9 +48,9 @@ class NotificationManager {
             
             notificationCenter.add(request) { error in
                 if let error = error {
-                    print("Errore durante la pianificazione della notifica: \(error.localizedDescription)")
+                    print("Error during notification scheduling: \(error.localizedDescription)")
                 } else {
-                    print("Notifica pianificata per \(daysBefore) giorni prima della scadenza di \(item.title).")
+                    print("Noification scheduled for \(daysBefore) days before the expiration date of \(item.title).")
                 }
             }
         }

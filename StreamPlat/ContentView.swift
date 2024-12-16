@@ -43,16 +43,16 @@ struct ContentView: View {
                         ForEach(filteredItems) { item in
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
-                                    .fill(isDarkMode ? Color.green : Color.gray) // Cambia colore in base alla modalità
+                                    .fill(isDarkMode ? Color.green : Color.gray)
                                     .frame(height: 100)
                                     .accessibilityLabel("\(item.title), \(item.info), \(Calendar.current.dateComponents([.day], from: Date(), to: item.date).day ?? 0) days left")
-
+                                
                                 VStack(alignment: .leading) {
                                     Text(item.title)
                                         .font(.system(size: 25))
                                         .bold()
                                         .frame(maxWidth: .infinity, alignment: .leading)
-
+                                    
                                     Text(item.info)
                                         .font(.system(size: 13))
                                     
@@ -86,7 +86,7 @@ struct ContentView: View {
                     ForEach(items) { item in
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(isDarkMode ? Color.green : Color.gray) // Cambia colore in base alla modalità
+                                .fill(isDarkMode ? Color.green : Color.gray)
                                 .accessibilityLabel("\(item.title)")
                             HStack {
                                 Text(item.title)
@@ -117,7 +117,7 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        showSettings = true // Mostra la sheet con il pulsante
+                        showSettings = true
                     }, label: {
                         Image(systemName: "gearshape.fill")
                     })
@@ -131,7 +131,7 @@ struct ContentView: View {
                     .presentationDetents([.medium])
             }
         }
-        .sheet(isPresented: $showSettings) { // Usa il file SettingsView
+        .sheet(isPresented: $showSettings) {
             SettingsView(isDarkMode: $isDarkMode)
                 .presentationDetents([.medium])
         }
@@ -156,7 +156,7 @@ struct ContentView: View {
         }, message: {
             Text("Are you sure you want to delete?")
         })
-        .preferredColorScheme(isDarkMode ? .dark : .light) // Imposta la modalità Light/Dark
+        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 }
 

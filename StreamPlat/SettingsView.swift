@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @Binding var isDarkMode: Bool // Collegamento alla variabile principale
+    @Binding var isDarkMode: Bool
     
     var body: some View {
         NavigationStack {
             VStack {
-                Toggle(isOn: $isDarkMode) { // Interruttore per cambiare la modalità
+                Toggle(isOn: $isDarkMode) {
                     Text("Dark Mode")
                         .font(.title2)
                 }
@@ -28,5 +28,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(isDarkMode: .constant(false)) // Anteprima con stato falso per la modalità scura
+    SettingsView(isDarkMode: .constant(false))
 }
