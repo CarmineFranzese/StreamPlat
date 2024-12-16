@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @Binding var isDarkMode: Bool // Collegamento alla variabile principale
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                Toggle(isOn: $isDarkMode) { // Interruttore per cambiare la modalità
+                    Text("Dark Mode")
+                        .font(.title2)
+                }
+                .padding()
+                
+                Spacer()
+            }
+            .navigationTitle("Settings")
+        }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(isDarkMode: .constant(false)) // Anteprima con stato falso per la modalità scura
 }

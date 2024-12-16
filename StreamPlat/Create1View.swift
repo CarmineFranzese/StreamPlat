@@ -23,6 +23,7 @@ struct Create1View: View {
                 withAnimation {
                     context.insert(item)
                 }
+                NotificationManager.shared.scheduleNotifications(for: item)
                 dismiss()
             }
         }

@@ -14,6 +14,9 @@ struct StreamPlatApp: App {
         WindowGroup {
             ContentView()
                 .modelContainer(for: PlatformItems.self)
+                .onAppear {
+                    NotificationManager.shared.requestNotificationPermission()
+                }
         }
     }
 }

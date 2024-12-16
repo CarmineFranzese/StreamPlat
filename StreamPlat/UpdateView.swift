@@ -21,6 +21,7 @@ struct UpdateView: View {
             DatePicker("Expiration Date", selection: $item.date, displayedComponents: .date)
             Button("Update") {
                 dismiss()
+                NotificationManager.shared.scheduleNotifications(for: item)
             }
         }
         .navigationTitle("Update")
