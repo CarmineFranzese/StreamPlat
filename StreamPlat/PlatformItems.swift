@@ -15,13 +15,13 @@ final class PlatformItems {
     var info: String
     var date: Date
     //var isCompleted: Bool
-    var reminder: [String] = []
+    //var reminder: [String: Bool] = [:]
     
-    init(title: String = "", info: String = "", date: Date = .now, /*isCompleted: Bool = false, */reminder: [String] = []){
+    init(title: String = "", info: String = "", date: Date = .now/*, isCompleted: Bool = false, reminder: [String: Bool] = [:]*/){
         self.title = title
         self.info = info
         self.date = date
         //self.isCompleted = isCompleted
-        self.reminder = reminder
+        //self.reminder = reminder
     }
 }

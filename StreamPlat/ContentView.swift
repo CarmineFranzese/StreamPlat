@@ -43,8 +43,7 @@ struct ContentView: View {
                         ForEach(filteredItems) { item in
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
-                                    .fill(isDarkMode ? Color.green : Color.gray)
-                                    .frame(height: 100)
+                                    .fill(isDarkMode ? Color.green.opacity(0.4) : Color.gray.opacity(0.4))
                                     .accessibilityLabel("\(item.title), \(item.info), \(Calendar.current.dateComponents([.day], from: Date(), to: item.date).day ?? 0) days left")
                                 
                                 VStack(alignment: .leading) {
@@ -65,12 +64,14 @@ struct ContentView: View {
                                 }
                                 .padding()
                             }
-                            .onTapGesture {
-                                PlatformEdit = item
-                            }
-                            .onLongPressGesture {
-                                selectedItem = item
-                                showDeleteConfirmation = true
+                            .contextMenu {
+                                Button("Edit") {
+                                    PlatformEdit = item
+                                }
+                                Button("Delete", role: .destructive) {
+                                    selectedItem = item
+                                    showDeleteConfirmation = true
+                                }
                             }
                         }
                     }
@@ -86,7 +87,7 @@ struct ContentView: View {
                     ForEach(items) { item in
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(isDarkMode ? Color.green : Color.gray)
+                                .fill(isDarkMode ? Color.green.opacity(0.4) : Color.gray.opacity(0.4))
                                 .accessibilityLabel("\(item.title)")
                             HStack {
                                 Text(item.title)
@@ -97,11 +98,14 @@ struct ContentView: View {
                             .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
                         }
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 6, trailing: 20))
-                        .onTapGesture {
-                        }
-                        .onLongPressGesture {
-                            selectedItem = item
-                            showDeleteConfirmation = true
+                        .contextMenu {
+                            Button("Edit") {
+                                PlatformEdit = item
+                            }
+                            Button("Delete", role: .destructive) {
+                                selectedItem = item
+                                showDeleteConfirmation = true
+                            }
                         }
                     }
                 }
@@ -138,8 +142,10 @@ struct ContentView: View {
         .sheet(item: $PlatformEdit) {
             PlatformEdit = nil
         } content: { item in
-            UpdateView(item: item)
-                .presentationDetents([.medium])
+            NavigationStack {
+                UpdateView(item: item)
+                    .presentationDetents([.medium])
+            }
         }
         .alert("Confirm Delete", isPresented: $showDeleteConfirmation, actions: {
             Button("Delete", role: .destructive) {
