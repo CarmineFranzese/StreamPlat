@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct Create1View: View {
-    
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var context
-    
-    @State private var item =  PlatformItems()
+    @State private var item = PlatformItems()
     
     var body: some View {
         List {
             TextField("Title", text: $item.title)
             TextField("Info", text: $item.info)
             DatePicker("Expiration Date", selection: $item.date, displayedComponents: .date)
+            ColorPicker("Pick a Color", selection: $item.color)
+            
             Button("Create") {
                 withAnimation {
                     context.insert(item)

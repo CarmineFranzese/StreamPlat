@@ -51,15 +51,18 @@ struct ContentView: View {
                                         .font(.system(size: 25))
                                         .bold()
                                         .frame(maxWidth: .infinity, alignment: .leading)
+                                        .foregroundColor(item.color)
                                     
                                     Text(item.info)
                                         .font(.system(size: 13))
+                                        .foregroundColor(item.color)
                                     
                                     if let daysRemaining = Calendar.current.dateComponents([.day], from: Date(), to: item.date).day {
                                         Text("\(daysRemaining) Days left")
                                             .frame(maxWidth: .infinity, alignment: .trailing)
                                             .bold()
                                             .font(.system(size: 13))
+                                            .foregroundColor(item.color)
                                     }
                                 }
                                 .padding()
