@@ -39,7 +39,7 @@ This project is a SwiftUI-based app that allows users to create, manage, and tra
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+https://github.com/CarmineFranzese/StreamPlat.git
    ```
 
 2. **Open the Project**
@@ -111,27 +111,3 @@ The app follows best practices for accessibility:
 - **High-Contrast Support**: Supports both light and dark themes.
 
 ---
-
-## Contributing
-
-1. **Fork the Repository**
-2. **Create a New Branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. **Make Changes**
-4. **Commit Changes**
-   ```bash
-   git commit -m "Add new feature"
-   ```
-5. **Push Changes**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-6. **Create a Pull Request**
-
----
-
-## License
-This project is licensed under the MIT License. You are free to use, modify, and distribute this project as per the terms of the license.
-

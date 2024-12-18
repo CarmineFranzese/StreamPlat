@@ -43,7 +43,7 @@ struct ContentView: View {
                         ForEach(filteredItems) { item in
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
-                                    .fill(isDarkMode ? Color.green.opacity(0.4) : Color.gray.opacity(0.4))
+                                    .fill(isDarkMode ? item.color : item.color.opacity(0.2))
                                     .accessibilityLabel("\(item.title), \(item.info), \(Calendar.current.dateComponents([.day], from: Date(), to: item.date).day ?? 0) days left")
                                 
                                 VStack(alignment: .leading) {
@@ -51,18 +51,18 @@ struct ContentView: View {
                                         .font(.system(size: 25))
                                         .bold()
                                         .frame(maxWidth: .infinity, alignment: .leading)
-                                        .foregroundColor(item.color)
+                                        .foregroundColor(isDarkMode ? Color.white : item.color)
                                     
                                     Text(item.info)
                                         .font(.system(size: 13))
-                                        .foregroundColor(item.color)
+                                        .foregroundColor(isDarkMode ? Color.white : item.color)
                                     
                                     if let daysRemaining = Calendar.current.dateComponents([.day], from: Date(), to: item.date).day {
                                         Text("\(daysRemaining) Days left")
                                             .frame(maxWidth: .infinity, alignment: .trailing)
                                             .bold()
                                             .font(.system(size: 13))
-                                            .foregroundColor(item.color)
+                                            .foregroundColor(isDarkMode ? Color.white : item.color)
                                     }
                                 }
                                 .padding()
@@ -90,13 +90,14 @@ struct ContentView: View {
                     ForEach(items) { item in
                         ZStack {
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(isDarkMode ? Color.green.opacity(0.4) : Color.gray.opacity(0.4))
+                                .fill(isDarkMode ? item.color : item.color.opacity(0.2))
                                 .accessibilityLabel("\(item.title)")
                             HStack {
                                 Text(item.title)
                                     .font(.system(size: 25))
                                     .bold()
                                     .frame(maxWidth: .infinity, alignment: .leading)
+                                    .foregroundColor(isDarkMode ? Color.white : item.color)
                             }
                             .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 0))
                         }
