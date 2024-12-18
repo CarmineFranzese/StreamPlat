@@ -38,10 +38,8 @@ This project is a SwiftUI-based app that allows users to create, manage, and tra
 ## Installation
 
 1. **Clone the Repository**
-   ```bash
-https://github.com/CarmineFranzese/StreamPlat.git
-   ```
-
+   `bash https://github.com/CarmineFranzese/StreamPlat.git`
+   
 2. **Open the Project**
    Open the `.xcodeproj` file using Xcode.
 
