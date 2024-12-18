@@ -1,4 +1,4 @@
-# README
+# Plat Manage
 
 ## Table of Contents
 - [Project Overview](#project-overview)
